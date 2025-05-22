@@ -1,6 +1,16 @@
-API_URL = "http://localhost:8085"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_BASE_URL_8065 = os.getenv("API_BASE_URL_8065")
+API_BASE_URL_8085 = os.getenv("API_BASE_URL_8085")
 
 ENDPOINTS = {
-    "get_news": "/eco-news/{id}",
-    "get_all_news": "/eco-news",
+    "user_login": "/api/testers/sign-in",
+    "news": "/eco-news/{0}"
 }
+
+TEST_USER_EMAIL = os.getenv("TEST_USER_EMAIL")
+TEST_USER_PASSWORD = os.getenv("TEST_USER_PASSWORD")
+SECRET_KEY = os.getenv("SECRET_KEY")
