@@ -12,8 +12,6 @@ def test_get_event_by_id_success(create_and_cleanup_event, test_event_json, test
         headers={"Authorization": auth_token}
     )
 
-    print(response.text)
-
     assert response.status_code == 200
 
     data = response.json()
@@ -22,8 +20,6 @@ def test_get_event_by_id_success(create_and_cleanup_event, test_event_json, test
 
     assert data["id"] == event_id
     assert data["title"] == test_event_json["title"]
-
-    pass
 
 def test_get_event_by_id_invalid_id():
     url = f"{API_BASE_URL_8085}/events/-1"

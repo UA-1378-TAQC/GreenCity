@@ -9,7 +9,8 @@ API_BASE_URL_8085 = os.getenv("API_BASE_URL_8085")
 ENDPOINTS = {
     "user_login": "/api/testers/sign-in",
     "news": "/eco-news/{0}",
-    "comments": "/eco-news/{0}/comments"
+    "comments": "/eco-news/{0}/comments",
+    "events": "/events/{0}",
 }
 
 TEST_USER_EMAIL = os.getenv("TEST_USER_EMAIL")
