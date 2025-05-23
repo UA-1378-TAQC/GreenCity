@@ -4,9 +4,6 @@ from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
 def test_add_comment_to_news(auth_token, create_comment):
     news_id = 1
 
-    data = '{"text": "шщазегнозхщашео", "parentCommentId": 0}'
-    files = {'request': (None, data)}
-
     files = create_comment
 
     response = requests.post(

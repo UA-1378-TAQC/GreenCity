@@ -23,8 +23,11 @@ def auth_token(login_token):
 
 @pytest.fixture
 def create_comment(auth_token):
-    print("▶ Створення коментаря...")
-    yield "Повернення значення з фікстури в тестовий метод. Потім ми повернемося сюди і виконаємо решку фікстіри або поки не зустрінемо наступний yield"
-    print("🗑 Видалення коментаря...")
+    print("Comment creation...")
+    data = '{"text": "{comment text here}", "parentCommentId": 0}'
+    files = {'request': (None, data)}
+
+    yield files
+    print("Place comment deleted logic below")
 
 
