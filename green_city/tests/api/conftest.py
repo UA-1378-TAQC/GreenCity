@@ -19,3 +19,12 @@ def login_token():
 @pytest.fixture
 def auth_token(login_token):
     return f"Bearer {login_token}"
+
+
+@pytest.fixture
+def create_comment(auth_token):
+    print("▶ Створення коментаря...")
+
+    print("🗑 Видалення коментаря...")
+
+
