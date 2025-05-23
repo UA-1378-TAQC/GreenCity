@@ -39,7 +39,12 @@ data = {
         'status': 400,
         'error': 'Bad Request',
         'path': '/eco-news/%25/summary'
-    }  
+    },  
+    "401_response_body":{
+        "status": 401,
+        "error": "Unauthorized",
+        "path": "/eco-news/1/summary"
+    }
 }
     
 def test_get_summary_by_id_not_found(auth_token):
@@ -75,3 +80,12 @@ def get_summary_request(token, id):
         f'{API_BASE_URL_8085}{ENDPOINTS["summary"].format(id)}',
         headers={"Authorization": token},
     )
+
+def test_get_summary_by_id_unauthorized():
+    news_id = 1
+    response = get_summary_request('', news_id)
+    logger.info(f"Status code: {response.status_code}")
+    validate(instance=response.json(), schema=summary_schema_error)
+    expected_status_code = 401
+    assert response.status_code == expected_status_code, f"Expected status code {expected_status_code}, but got {response.status_code}"
+    assert response.json()["error"]==data["401_response_body"].get("error")
