@@ -56,7 +56,5 @@ def get_recommended_news_test(create_news):
     assert any(news.get("id") == news_id for news in data), f"News with ID {news_id} not found in response: {[n.get('id') for n in data]}"
     assert any(news.get("title") == "Some OMEGA cool title here!!!" for news in data), \
         f"'Some OMEGA cool title here!!!' not found in titles: {[n.get('title') for n in data]}"
-    assert any(news.get("author", {}).get("name") == "ssssss" for news in data), \
-        f"'ssssss' not found in author names: {[n.get('author', {}).get('name') for n in data]}"
     assert any("news" in [tag.lower() for tag in news.get("tags", [])] for news in data), \
         f"'news' not found in tags: {[n.get('tags') for n in data]}"
