@@ -52,4 +52,4 @@ def test_get_tags_en_language():
 
     for tag in tags:
         assert tag.get('languageCode') in ['en', None]
-        
+
