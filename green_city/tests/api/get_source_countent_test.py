@@ -6,4 +6,23 @@ from jsonschema import validate
 
 logger = logging.getLogger(__name__)
 
+summary_schema = {
+  "type": "object",
+    "properties": {
+        "message": {"type": "string"}
+    },
+    "required": ["message"],
+    "additionalProperties": False
+}
+    
+def test_get_summary_by_id_not_found(auth_token):
+    news_invalid_id = 101
+    response = requests.get(
+        f'{API_BASE_URL_8085}{ENDPOINTS["summary"].format(news_invalid_id)}',
+        headers={"Authorization": auth_token},
+    )
+    logger.info(response.status_code)
+    validate(instance=response.json(), schema=summary_schema)
+    assert response.status_code == 404, f"Expected status code 404, but got {response.status_code}"
+    assert response.json()["message"]=="Eco new doesn't exist by this id: 101"
 
