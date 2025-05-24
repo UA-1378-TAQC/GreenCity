@@ -10,9 +10,13 @@ ENDPOINTS = {
     "user_login": "/api/testers/sign-in",
     "news": "/eco-news/{0}",
     "comments": "/eco-news/{0}/comments",
-    "summary": "/eco-news/{0}/summary"
+    "summary": "/eco-news/{0}/summary",
+    "create_eco_news": "/eco-news",
+    "delete_eco_news":"/eco-news/{0}"
 }
 
 TEST_USER_EMAIL = os.getenv("TEST_USER_EMAIL")
 TEST_USER_PASSWORD = os.getenv("TEST_USER_PASSWORD")
+CREATOR_USER_EMAIL= os.getenv("CREATOR_USER_EMAIL")
+CREATOR_USER_PASSWORD= os.getenv("CREATOR_USER_PASSWORD")
 SECRET_KEY = os.getenv("SECRET_KEY")

@@ -5,7 +5,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
 coloredlogs.install(
-    level='DEBUG', 
+    level='DEBUG',
     logger=logger,
     fmt='%(asctime)s %(levelname)s [%(name)s] %(message)s',
     level_styles={
@@ -14,7 +14,7 @@ coloredlogs.install(
         'warning': {'color': 'yellow'},
         'error': {'color': 'red', 'bold': True},
         'critical': {'color': 'red', 'bold': True, 'background': 'white'},
-    }, 
+    },
     field_styles={
         'asctime': {'color': 'cyan'},
         'levelname': {'bold': True},
