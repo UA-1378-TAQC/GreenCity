@@ -12,5 +12,4 @@ def test_add_comment_to_news(auth_token, create_comment):
         files=files
     )
 
-    comment_id = response.json().get("id")
     assert response.status_code == 201, "Login is failed"
