@@ -1,20 +1,7 @@
 import pytest
 import requests
 import json
-from green_city.src.util.auth_helpers import get_auth_token
-from green_city.src.config import TEST_USER_EMAIL, TEST_USER_PASSWORD, CREATOR_USER_EMAIL, CREATOR_USER_PASSWORD, API_BASE_URL_8085, ENDPOINTS
-
-
-
-@pytest.fixture
-def create_comment(auth_token):
-    print("Comment creation...")
-    data = '{"text": "{comment text here}", "parentCommentId": 0}'
-    files = {'request': (None, data)}
-
-    yield files
-    print("Place comment deleted logic below")
-
+from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
 
 @pytest.fixture(scope="function")
 def create_news(auth_token):
