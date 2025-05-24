@@ -1,6 +1,5 @@
 import requests
 from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
-from green_city.tests.api.fixtures.conftest import *
 
 def test_dislike_news(create_news,auth_token_second_user):
     news_id = create_news
