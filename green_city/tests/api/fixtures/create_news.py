@@ -1,6 +1,7 @@
 import pytest
 import requests
 import json
+from green_city.tests.api.fixtures.login_fixture import auth_token
 from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
 
 @pytest.fixture(scope="function")
