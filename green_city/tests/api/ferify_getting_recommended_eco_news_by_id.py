@@ -42,7 +42,7 @@ recommended_news_schema = {
     }
 }
 
-def get_recommended_news_test(create_news):
+def test_get_recommended_news(create_news):
     NEWS_ID = 1
     news_id = create_news
     full_url = f"{API_BASE_URL_8085}{ENDPOINTS['recommended_eco_news'].format(NEWS_ID)}"
