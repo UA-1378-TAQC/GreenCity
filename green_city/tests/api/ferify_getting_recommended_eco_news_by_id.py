@@ -1,46 +1,8 @@
 import requests
 from jsonschema import validate
 from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
-
-recommended_news_schema = {
-    "type": "array",
-    "items": {
-        "type": "object",
-        "properties": {
-            "creationDate": {"type": "string", "format": "date-time"},
-            "imagePath": {"type": ["string", "null"]},
-            "id": {"type": "integer"},
-            "title": {"type": "string"},
-            "content": {"type": "string"},
-            "shortInfo": {"type": ["string", "null"]},
-            "author": {
-                "type": "object",
-                "properties": {
-                    "id": {"type": "integer"},
-                    "name": {"type": "string"}
-                },
-                "required": ["id", "name"]
-            },
-            "tags": {
-                "type": "array",
-                "items": {"type": "string"}
-            },
-            "tagsUa": {
-                "type": "array",
-                "items": {"type": "string"}
-            },
-            "likes": {"type": "integer"},
-            "dislikes": {"type": "integer"},
-            "countComments": {"type": "integer"},
-            "hidden": {"type": "boolean"}
-        },
-        "required": [
-            "creationDate", "imagePath", "id", "title", "content",
-            "shortInfo", "author", "tags", "tagsUa",
-            "likes", "dislikes", "countComments", "hidden"
-        ]
-    }
-}
+from green_city.tests.api.fixtures.create_news import create_news
+from green_city.tests.test_data.schema import recommended_news_schema
 
 def test_get_recommended_news(create_news):
     DEFAULT_NEWS_ID = 1
