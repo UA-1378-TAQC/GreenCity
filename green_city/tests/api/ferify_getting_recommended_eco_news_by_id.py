@@ -43,9 +43,9 @@ recommended_news_schema = {
 }
 
 def test_get_recommended_news(create_news):
-    NEWS_ID = 1
+    DEFAULT_NEWS_ID = 1
     news_id = create_news
-    full_url = f"{API_BASE_URL_8085}{ENDPOINTS['recommended_eco_news'].format(NEWS_ID)}"
+    full_url = f"{API_BASE_URL_8085}{ENDPOINTS['recommended_eco_news'].format(DEFAULT_NEWS_ID)}"
     response = requests.get(full_url)
 
     assert response.status_code == 200, "Failed to get news"
