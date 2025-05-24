@@ -4,6 +4,7 @@ import requests
 from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
 import logging
 from jsonschema import validate
+from ..data.schema.all_news_schema import schema_all_news
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +26,9 @@ def test_add_to_favorites_success(create_news, auth_token):
         headers={"Authorization": auth_token}
     )
     logger.info(f"Status code: {response.status_code}")
+  
     data=response.json()
+    validate(instance=data, schema=schema_all_news)
     matching_users = next((entry for entry in data["page"] if entry["id"] == id), None)
     assert matching_users['favorite'] == True, f'Expected "favorite": True, but was {matching_users["favorite"]}'
     
