@@ -10,9 +10,9 @@ ENDPOINTS = {
     "user_login": "/api/testers/sign-in",
     "news": "/eco-news/{0}",
     "comments": "/eco-news/{0}/comments",
-    "recommended_eco_news":"/eco-news/{0}/recommended",
-    "create_eco_news":"/eco-news",
-    "delete_eco_news":"/eco-news/{0}"
+    "recommended_eco_news": "/eco-news/{0}/recommended",
+    "create_eco_news": "/eco-news",
+    "delete_eco_news": "/eco-news/{0}"
 }
 
 TEST_USER_EMAIL = os.getenv("TEST_USER_EMAIL")
