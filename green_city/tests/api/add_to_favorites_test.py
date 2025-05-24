@@ -46,5 +46,3 @@ def test_add_to_favorites_incorrect_id(auth_token):
       expected_response_by_param = "Wrong ecoNewsId. Should be 'Long'"
       schema_by_param = single_message_schema
       assert_test_response(response, expected_status_code, param, expected_response_by_param, schema_by_param)
-
-    
