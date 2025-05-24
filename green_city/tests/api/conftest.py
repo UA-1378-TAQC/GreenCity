@@ -2,8 +2,7 @@ import pytest
 import requests
 import json
 from green_city.src.util.auth_helpers import get_auth_token
-from green_city.src.config import TEST_USER_EMAIL, TEST_USER_PASSWORD, CREATOR_USER_EMAIL, CREATOR_USER_PASSWORD
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.src.config import TEST_USER_EMAIL, TEST_USER_PASSWORD, CREATOR_USER_EMAIL, CREATOR_USER_PASSWORD, API_BASE_URL_8085, ENDPOINTS
 
 @pytest.fixture(scope="session")
 def auth_token():
