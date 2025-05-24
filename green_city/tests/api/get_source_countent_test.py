@@ -4,8 +4,8 @@ import requests
 from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
 import logging
 from jsonschema import validate
-from ..test_data.test_data.summary_source_content_data import data_get_request as get_data
-from ..test_data.schema.summary_source_content_schema import schemas_get_request as get_schema
+from ..data.test_data.summary_source_content_data import data_get_request as get_data
+from ..data.schema.summary_source_content_schema import schemas_get_request as get_schema
 
 logger = logging.getLogger(__name__)
 
