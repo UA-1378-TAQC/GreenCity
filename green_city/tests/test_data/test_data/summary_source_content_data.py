@@ -19,8 +19,7 @@ data_get_request = {
     },
     "200_response_body":{
         "status": 200,
-        "summary"
-        "content": "<p>My Test Eco News My Test Eco News</p>",
+        "content": "Some cool text here!!!",
         "source": "https://example.org/"
     }
 }
