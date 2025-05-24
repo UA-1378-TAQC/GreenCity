@@ -15,14 +15,16 @@ logger = logging.getLogger(__name__)
         ("8&", ["message"], get_data["400_response_body"], get_schema["summary_schema_message"], True),
         ("%25", ["error"], get_data["400_response_body_html"], get_schema["summary_schema_error"], True),
         ("1",["error"], get_data["401_response_body"], get_schema["summary_schema_error"], False),
-        ("101", ["message"], get_data["404_response_body"], get_schema["summary_schema_message"], True),
+        ("404", ["message"], get_data["404_response_body"], get_schema["summary_schema_message"], True),
         ("1", ["content","source"], get_data["200_response_body"], get_schema["summary_schema_valid_result"], True)
     ]
 )
 
-def test_get_summary_by_id(eco_news_id, expected_param, expected_response, expected_schema, token, auth_token, create_news):
-    id = create_news if eco_news_id=='1' and token==True else eco_news_id
+def test_get_summary_by_id(eco_news_id, expected_param, expected_response, expected_schema, token, auth_token, create_news, create_not_found_news):
+    
+    id = create_not_found_news if eco_news_id=='404' else (create_news if eco_news_id=='1' and token==True else eco_news_id)
     logger.info(f'id={id}')
+
     token_for_use = auth_token if token is True else ''
     response = requests.get(
         f'{API_BASE_URL_8085}{ENDPOINTS["summary"].format(id)}',
@@ -35,8 +37,6 @@ def test_get_summary_by_id(eco_news_id, expected_param, expected_response, expec
     expected_status_code = expected_response.get("status")
     assert response.status_code == expected_status_code, f"Expected status code {expected_status_code}, but got {response.status_code}"
     for param in expected_param:
-        assert response.json()[param]==expected_response.get(param), f"Expected {param}: {expected_response.get(param)} but got {response.json()[param]}"
-
-
-
+        expected_response_by_param = expected_response.get(param).format(id)
+        assert response.json()[param]==expected_response_by_param, f"Expected {param}: {expected_response_by_param} but got {response.json()[param]}"
 

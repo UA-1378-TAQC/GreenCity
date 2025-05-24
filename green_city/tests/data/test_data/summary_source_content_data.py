@@ -1,7 +1,7 @@
 data_get_request = {
     "404_response_body":{
         "status": 404,
-        "message":"Eco new doesn't exist by this id: 101"
+        "message":"Eco new doesn't exist by this id: {0}"
     },
     "400_response_body":{
         "status": 400,
