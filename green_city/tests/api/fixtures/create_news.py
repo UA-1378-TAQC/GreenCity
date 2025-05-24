@@ -2,30 +2,14 @@ import pytest
 import requests
 import json
 from green_city.tests.api.fixtures.login_fixture import auth_token
+from green_city.tests.data.fixture_dto.create_news_dto import create_news_dto_request
 from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
 
 @pytest.fixture(scope="function")
 def create_news(auth_token):
     url = f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}"
 
-    dto_request = {
-        "image": "string",
-        "source": "https://example.org/",
-        "shortInfo": "string",
-        "title": "Some OMEGA cool title here!!!",
-        "text": "Some cool text here!!!",
-        "tags": ["news"],
-        "titleTranslation": {
-            "content": "string",
-            "languageCode": "string"
-        },
-        "textTranslation": {
-            "content": "string",
-            "languageCode": "string"
-        }
-    }
-
-    dto_request_str = json.dumps(dto_request)
+    dto_request_str = json.dumps(create_news_dto_request)
 
     files = {
         'addEcoNewsDtoRequest': (None, dto_request_str),

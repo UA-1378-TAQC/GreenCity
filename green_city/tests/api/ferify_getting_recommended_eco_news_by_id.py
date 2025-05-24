@@ -1,7 +1,7 @@
 import requests
 from jsonschema import validate
 from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
-from green_city.tests.test_data.schema.recommended_news_schema import recommended_news_schema
+from green_city.tests.data.schema.recommended_news_schema import recommended_news_schema
 
 def test_get_recommended_news(create_news):
     DEFAULT_NEWS_ID = 1
