@@ -19,7 +19,7 @@ cd GreenCity
 On Windows:
 ```bash
 python -m venv venv
-source venv\Scripts\activate
+.\venv\Scripts\Activate.ps1
 ```
 On macOS/Linux:
 ```bash
