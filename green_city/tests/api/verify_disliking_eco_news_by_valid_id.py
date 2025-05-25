@@ -19,7 +19,8 @@ def test_dislike_news(
 
     assert liked_before is True
 
-    dislike_news_factory(news_id, auth_token_second_user)
+    response = dislike_news_factory(news_id, auth_token_second_user)
+    assert response.status_code == 200, "Failed to dislike news"
 
     likes_url = f"{API_BASE_URL_8085}{ENDPOINTS['check_eco_news_likes_count'].format(news_id)}"
     dislikes_url = f"{API_BASE_URL_8085}{ENDPOINTS['check_eco_news_dislikes_count'].format(news_id)}"
