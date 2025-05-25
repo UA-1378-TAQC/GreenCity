@@ -12,7 +12,12 @@ ENDPOINTS = {
     "comments": "/eco-news/{0}/comments",
     "create_eco_news": "/eco-news",
     "delete_eco_news":"/eco-news/{0}",
-    "dislike_eco_news": "/eco-news/{0}/dislikes"
+    "dislike_eco_news": "/eco-news/{0}/dislikes",
+    "like_eco_news": "/eco-news/{0}/likes",
+    "get_user_id_by_email": "/user/findIdByEmail",
+    "is_user_liked_eco_news": "/eco-news/{0}/likes/{1}",
+    "check_eco_news_likes_count": "/eco-news/{0}/likes/count",
+    "check_eco_news_dislikes_count": "/eco-news/{0}/dislikes/count",
 }
 
 TEST_USER_EMAIL = os.getenv("TEST_USER_EMAIL")
