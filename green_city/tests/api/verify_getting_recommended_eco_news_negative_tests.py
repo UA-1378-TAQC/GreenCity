@@ -1,12 +1,10 @@
 import pytest
 import requests
 from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.tests.data.test_data.recommended_news_invalid_ids import recommended_news_invalid_ids
 
-@pytest.mark.parametrize("eco_news_id, expected_status, expected_message", [
-    ("abc", 400, "Wrong ecoNewsId. Should be 'Long'"),
-    ("-42", 400, "Eco new doesn't exist by this id: -42"),
-    ("", 400, "")
-])
+
+@pytest.mark.parametrize("eco_news_id, expected_status, expected_message", recommended_news_invalid_ids)
 def test_get_recommended_news_invalid_ids(auth_token, eco_news_id, expected_status, expected_message):
     url = f"{API_BASE_URL_8085}{ENDPOINTS['news_recommended'].format(eco_news_id)}"
     headers = {"Authorization": auth_token}
