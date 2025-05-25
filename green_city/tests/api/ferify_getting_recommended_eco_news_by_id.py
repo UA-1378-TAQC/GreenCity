@@ -10,8 +10,8 @@ def test_get_recommended_news(create_news):
     response = requests.get(full_url)
 
     assert response.status_code == 200, "Failed to get news"
-    data = response.json()
 
+    data = response.json()
     validate(instance=data, schema=recommended_news_schema)
 
     assert any(news.get("id") == news_id for news in data), f"News with ID {news_id} not found in response: {[n.get('id') for n in data]}"
