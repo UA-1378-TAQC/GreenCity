@@ -11,8 +11,7 @@ ENDPOINTS = {
     "news": "/eco-news/{0}",
     "comments": "/eco-news/{0}/comments",
     "create_eco_news": "/eco-news",
-    "delete_eco_news":"/eco-news/{0}"
-    "comments": "/eco-news/{0}/comments",
+    "delete_eco_news":"/eco-news/{0}",
     "news_tags": "/eco-news/tags"
 }
 
