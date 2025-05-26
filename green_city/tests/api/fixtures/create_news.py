@@ -46,3 +46,6 @@ def create_not_found_news(auth_token):
     assert del_response.status_code == 200, "Failed to delete news"
     yield news_id
 
+@pytest.fixture(scope="function")
+def valid_news_payload():
+    return create_news_dto_request.copy()
