@@ -60,7 +60,7 @@ post_event_validation_test_cases = [
     #     ]
     # },
 
-    # Scenario 7: Empty Tags Validation
+    # Scenario 6: Empty Tags Validation
     {
         "name": "empty_tags",
         "payload": {"tags": []},
