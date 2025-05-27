@@ -3,42 +3,14 @@ import requests
 import json
 from jsonschema.validators import validate
 
-from green_city.src.config import API_BASE_URL_8085
+from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
 
 
-@pytest.fixture
-def create_and_cleanup_eco_news(auth_token):
-
-    eco_news_json = {
-        "title": "Test Eco News Title",
-        "text": "This is a test eco news content for testing likes count functionality. It needs to be long enough to meet requirements.",
-        "tags": ["news"],
-        "source": "https://example.org/",
-        "shortInfo": "Test eco news for likes count testing"
-    }
-
-    files = {
-        'addEcoNewsDtoRequest': (None, json.dumps(eco_news_json)),
-        'image': (None, '')
-    }
-
-    response = requests.post(
-        f"{API_BASE_URL_8085}/eco-news",
-        files=files,
-        headers={"Authorization": auth_token}
-    )
-
-    assert response.status_code == 201, f"Failed to create eco news: {response.status_code}"
-
-    eco_news_id = response.json()["id"]
-
-    yield eco_news_id
-
-def test_get_eco_news_likes_count_success(create_and_cleanup_eco_news):
-    eco_news_id = create_and_cleanup_eco_news
+def test_get_eco_news_likes_count_success(create_news):
+    eco_news_id = create_news
 
     response = requests.get(
-        f"{API_BASE_URL_8085}/eco-news/{eco_news_id}/likes/count"
+        f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}/{eco_news_id}/likes/count"
     )
 
     assert response.status_code == 200, f"Expected 200, got {response.status_code}"
@@ -52,7 +24,7 @@ def test_get_eco_news_likes_count_not_found():
     non_existent_id = 999999
 
     response = requests.get(
-        f"{API_BASE_URL_8085}/eco-news/{non_existent_id}/likes/count"
+        f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}/{non_existent_id}/likes/count"
     )
 
     assert response.status_code == 404, f"Expected 404, got {response.status_code}"
@@ -62,7 +34,7 @@ def test_get_eco_news_likes_count_bad_request():
     invalid_id = "invalid_id"
 
     response = requests.get(
-        f"{API_BASE_URL_8085}/eco-news/{invalid_id}/likes/count"
+        f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}/{invalid_id}/likes/count"
     )
 
     assert response.status_code == 400, f"Expected 400, got {response.status_code}"
@@ -72,7 +44,7 @@ def test_get_eco_news_likes_count_negative_id():
     negative_id = -1
 
     response = requests.get(
-        f"{API_BASE_URL_8085}/eco-news/{negative_id}/likes/count"
+        f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}/{negative_id}/likes/count"
     )
     assert response.status_code in [400, 404], f"Expected 400 or 404, got {response.status_code}"
 
@@ -81,17 +53,17 @@ def test_get_eco_news_likes_count_zero_id():
     zero_id = 0
 
     response = requests.get(
-        f"{API_BASE_URL_8085}/eco-news/{zero_id}/likes/count"
+        f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}/{zero_id}/likes/count"
     )
 
     assert response.status_code in [400, 404], f"Expected 400 or 404, got {response.status_code}"
 
 
-def test_get_eco_news_likes_count_response_headers(create_and_cleanup_eco_news):
-    eco_news_id = create_and_cleanup_eco_news
+def test_get_eco_news_likes_count_response_headers(create_news):
+    eco_news_id = create_news
 
     response = requests.get(
-        f"{API_BASE_URL_8085}/eco-news/{eco_news_id}/likes/count"
+        f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}/{eco_news_id}/likes/count"
     )
 
     assert response.status_code == 200
@@ -106,7 +78,7 @@ def test_get_eco_news_likes_count_response_headers(create_and_cleanup_eco_news):
 @pytest.mark.parametrize("eco_news_id", [1, 2, 3])
 def test_get_eco_news_likes_count_various_ids(eco_news_id):
     response = requests.get(
-        f"{API_BASE_URL_8085}/eco-news/{eco_news_id}/likes/count"
+        f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}/{eco_news_id}/likes/count"
     )
     assert response.status_code in [200, 404], f"Expected 200 or 404, got {response.status_code}"
 
