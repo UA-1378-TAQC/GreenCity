@@ -1,11 +1,12 @@
-import green_city.src.util.logging_config
+from green_city.config.logging_config import get_logger
 import requests
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
-import logging
-from jsonschema import validate
+import pytest
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
+from jsonschema import validate, ValidationError
+from ..data.schema.general_schemas import error_schema, single_message_schema
 from ..data.schema.all_news_schema import schema_all_news
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 def request_add_to_favorites(token, id):
     return requests.post(
@@ -20,7 +21,7 @@ def test_add_to_favorites_success(create_news, auth_token):
     logger.info(f"Status code: {response.status_code}")
     expected_status_code = 200
     assert response.status_code == expected_status_code, f"Expected status code {expected_status_code}, but got {response.status_code}"
-    assert len(response.text)==0, f"Expected response should have be empty, but was {response.json()}"
+    assert len(response.text)==0, f"Expected response should have be empty"
 
     logger.info('Request to get all news')
     response = requests.get(
@@ -29,7 +30,19 @@ def test_add_to_favorites_success(create_news, auth_token):
     )
     logger.info(f"Status code: {response.status_code}")
   
-    data=response.json()
-    validate(instance=data, schema=schema_all_news)
+    data=get_response_json(response)
+    assert_scheme(data,schema_all_news)
     matching_users = next((entry for entry in data["page"] if entry["id"] == id), None)
     assert matching_users['favorite'] == True, f'Expected "favorite": True, but was {matching_users["favorite"]}'
+
+def assert_scheme(json_data, response_schema ):
+    try:
+        validate(instance=json_data, schema=response_schema)
+    except ValidationError as e:
+        pytest.fail(f"Response JSON does not match schema: {e.message}")
+
+def get_response_json(response):
+    try:
+        return response.json()
+    except ValueError:
+        pytest.fail("Response is not valid JSON")
