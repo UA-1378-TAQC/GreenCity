@@ -3,6 +3,7 @@ import requests
 import json
 from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
 from ...data.fixture_dto.create_news_dto import create_news_dto_request
+import copy
 
 @pytest.fixture(scope="function")
 def create_news(auth_token):
@@ -48,4 +49,4 @@ def create_not_found_news(auth_token):
 
 @pytest.fixture(scope="function")
 def valid_news_payload():
-    return create_news_dto_request.copy()
+    return copy.deepcopy(create_news_dto_request)

@@ -37,6 +37,8 @@ def test_add_news_unauthorized(valid_news_payload):
     logger.info(f"Unauthorized news POST: {resp.status_code} - {resp.text}")
     assert resp.status_code == 401
     validate(resp.json(), post_schema["401_schema"])
+    assert resp.json()["status"] == 401
+    assert resp.json()["error"] == "Unauthorized"
 
 
 @pytest.mark.parametrize("tags, expected_message", [
@@ -51,7 +53,7 @@ def test_add_news_invalid_tags(auth_token, valid_news_payload, tags, expected_me
     assert expected_message in json_body.get("message", "")
     logger.info("Validating response schema for 400...")
     validate(json_body, post_schema["400_schema"])
-
+    assert isinstance(resp.json()["message"], str)
 
 def test_add_news_invalid_source(auth_token, valid_news_payload):
     valid_news_payload["source"] = "example.org"
@@ -62,3 +64,4 @@ def test_add_news_invalid_source(auth_token, valid_news_payload):
     assert "URI" in json_body.get("message", "")
     logger.info("Validating response schema for 400...")
     validate(json_body, post_schema["400_schema"])
+    assert isinstance(resp.json()["message"], str)
