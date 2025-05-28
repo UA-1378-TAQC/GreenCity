@@ -1,7 +1,8 @@
 from green_city.config.logging_config import get_logger
 import requests
+import pytest
 from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
-from jsonschema import validate
+from jsonschema import validate, ValidationError
 from ..data.schema.general_schemas import error_schema, single_message_schema
 
 logger = get_logger(__name__)
@@ -14,7 +15,8 @@ def request_add_to_favorites(token, id):
 
 def assert_test_response(response, expected_status_code, param, expected_response_by_param, schema_by_param):
       assert response.status_code == expected_status_code, f"Expected status code {expected_status_code}, but got {response.status_code}"
-      validate(instance=response.json(), schema=schema_by_param)
+      data_json = get_response_json(response)
+      assert_scheme(data_json,schema_by_param)
       assert response.json()[param]==expected_response_by_param, f"Expected {param}: {expected_response_by_param} but got {response.json()[param]}"
  
 def test_add_to_favorites_unauthorized(create_news):
@@ -28,3 +30,15 @@ def test_add_to_favorites_unauthorized(create_news):
       expected_response_by_param = "Unauthorized"
       schema_by_param = error_schema
       assert_test_response(response, expected_status_code, param, expected_response_by_param, schema_by_param)
+
+def assert_scheme(json_data, response_schema ):
+    try:
+        validate(instance=json_data, schema=response_schema)
+    except ValidationError as e:
+        pytest.fail(f"Response JSON does not match schema: {e.message}")
+
+def get_response_json(response):
+    try:
+        return response.json()
+    except ValueError:
+        pytest.fail("Response is not valid JSON")
