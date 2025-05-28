@@ -1,8 +1,8 @@
 import pytest
 import requests
 import json
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
-from ...data.fixture_dto.create_news_dto import create_news_dto_request
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.data.fixture_dto.create_news_dto import create_news_dto_request
 
 @pytest.fixture(scope="function")
 def create_news(auth_token):

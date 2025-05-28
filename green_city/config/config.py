@@ -14,6 +14,11 @@ ENDPOINTS = {
     "delete_eco_news":"/eco-news/{0}",
     "favorites":"/eco-news/{0}/favorites",
     "all_news": "/eco-news",
+    "get_eco_news": "/eco-news",
+    "events": "/events",
+    "event_by_id": "/events/{0}",
+    "delete_events": "/events/{0}",
+    "event_comments": "/events/{0}/comments",
 }
 
 TEST_USER_EMAIL = os.getenv("TEST_USER_EMAIL")
