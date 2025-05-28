@@ -2,9 +2,9 @@ import pytest
 import json
 import requests
 from jsonschema import validate
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from green_city.tests.data.schema.add_news_schema import post_schema
-import green_city.src.util.logging_config
+import green_city.config.logging_config
 import logging
 
 logger = logging.getLogger(__name__)
