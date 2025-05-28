@@ -12,6 +12,12 @@ ENDPOINTS = {
     "comments": "/eco-news/{0}/comments",
     "create_eco_news": "/eco-news",
     "delete_eco_news":"/eco-news/{0}",
+
+
+
+
+
+    
     "get_eco_news": "/eco-news"
 }
 
