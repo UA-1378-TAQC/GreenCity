@@ -175,9 +175,4 @@ cython_debug/
 
 #VScode settings
 .vscode
-<<<<<<< HEAD
 
-#Idea settings
-.idea/
-=======
->>>>>>> main
