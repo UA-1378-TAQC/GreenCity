@@ -1,11 +1,10 @@
-import green_city.src.util.logging_config
+from green_city.config.logging_config import get_logger
 import requests
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
-import logging
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from jsonschema import validate
 from ..data.schema.general_schemas import error_schema, single_message_schema
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 def request_add_to_favorites(token, id):
       return requests.post(
