@@ -12,6 +12,7 @@ ENDPOINTS = {
     "comments": "/eco-news/{0}/comments",
     "create_eco_news": "/eco-news",
     "delete_eco_news":"/eco-news/{0}",
+    "favorites":"/eco-news/{0}/favorites",
     "get_eco_news": "/eco-news",
     "events": "/events",
     "event_by_id": "/events/{0}",
