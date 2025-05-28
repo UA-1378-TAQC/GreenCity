@@ -1,8 +1,8 @@
 import pytest
 import requests
 import json
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
-from green_city.tests.data.fixture_dto.create_event_dto_request import create_event_dto_request
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.data.fixture_dto.create_event_dto_request import create_event_dto_request
 
 @pytest.fixture
 def create_event(auth_token):

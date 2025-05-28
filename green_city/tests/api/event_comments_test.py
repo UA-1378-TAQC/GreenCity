@@ -5,8 +5,8 @@ import pytest
 import requests
 from jsonschema import validate
 
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
-from green_city.tests.data.schema.event_comment_schema import (
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.data.schema.event_comment_schema import (
     EVENT_COMMENT_201,
     EVENT_COMMENT_400,
     EVENT_COMMENT_401,
