@@ -2,7 +2,6 @@ from green_city.config.logging_config import get_logger
 import pytest
 import requests
 from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
-import logging
 from jsonschema import validate, ValidationError
 from ..data.test_data.summary_source_content_data import data_get_request as get_data
 from ..data.schema.summary_source_content_schema import schemas_get_request as get_schema
