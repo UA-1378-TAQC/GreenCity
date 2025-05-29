@@ -1,8 +1,9 @@
 import pytest
 import requests
 import json
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
-from ...data.fixture_dto.create_news_dto import create_news_dto_request
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.data.fixture_dto.create_news_dto import create_news_dto_request
+import copy
 
 @pytest.fixture(scope="function")
 def create_news(auth_token):
@@ -63,3 +64,6 @@ def create_not_found_news(auth_token):
     assert del_response.status_code == 200, "Failed to delete news"
     yield news_id
 
+@pytest.fixture(scope="function")
+def valid_news_payload():
+    return copy.deepcopy(create_news_dto_request)
