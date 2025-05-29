@@ -4,8 +4,6 @@ import logging
 import pytest
 import requests
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
-
 import green_city.config.config
 import green_city.config.logging_config
 
@@ -14,6 +12,7 @@ from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from green_city.data.schema.get_published_eco_news_count_schema import ECO_NEWS_COUNT_SCHEMA
 
 logger = logging.getLogger(__name__)
+
 
 def test_get_eco_news_count_returns_200_and_valid_value():
     url = f"{API_BASE_URL_8085}{ENDPOINTS['count_eco_news']}"
