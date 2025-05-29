@@ -1,5 +1,6 @@
 import copy
-from green_city.tests.data.fixture_dto.create_event_dto_request import create_event_dto_request
+
+from green_city.data.fixture_dto.create_event_dto_request import create_event_dto_request
 
 post_event_test_data = {
     "empty_title": {
