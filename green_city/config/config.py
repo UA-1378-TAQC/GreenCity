@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_BASE_URL_8065 = os.getenv("API_BASE_URL_8065")
-API_BASE_URL_8085 = os.getenv("API_BASE_URL_8085")
+API_BASE_URL_8065 = os.getenv("API_BASE_URL_8065","http://localhost:8065/")
+API_BASE_URL_8085 = os.getenv("API_BASE_URL_8085","http://localhost:8085/")
 
 ENDPOINTS = {
     "user_login": "/api/testers/sign-in",
@@ -12,7 +12,13 @@ ENDPOINTS = {
     "comments": "/eco-news/{0}/comments",
     "create_eco_news": "/eco-news",
     "delete_eco_news":"/eco-news/{0}",
-    "get_eco_news": "/eco-news"
+    "get_eco_news": "/eco-news",
+    "events": "/events",
+    "event_by_id": "/events/{0}",
+    "delete_events": "/events/{0}",
+    "event_comments": "/events/{0}/comments",
+    "count_eco_news": "/eco-news/count",
+    "check_eco_news_likes_count": "/eco-news/{0}/likes/count",
 }
 
 TEST_USER_EMAIL = os.getenv("TEST_USER_EMAIL")
