@@ -1,15 +1,8 @@
 import pytest
 import requests
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from jsonschema import validate
 from ..data.schema.tags_schema import TAGS_SCHEMA, TAGS_ERROR_MESSAGE_SCHEMA
-import green_city.src.util.logging_config
-import logging
-
-logger = logging.getLogger(__name__)
-
-def test():
-    logger.info("info")
 
 def test_get_tags_default_returns_200():
     response = requests.get(f"{API_BASE_URL_8085}{ENDPOINTS['news_tags']}")
@@ -19,7 +12,9 @@ def test_get_tags_default_returns_200():
     assert response.headers['Content-Type'] == 'application/json', \
         "Response content type should be application/json"
 
-    validate(instance=response.json(), schema=TAGS_SCHEMA)
+    assert validate(instance=response.json(), schema=TAGS_SCHEMA) is None, (
+        "Response data does not match schema"
+    )
 
 @pytest.mark.parametrize("lang_code", ["en", "ua"])
 def test_get_tags_in_language_returns_200(lang_code):
@@ -35,7 +30,9 @@ def test_get_tags_in_language_returns_200(lang_code):
         "Response content type should be application/json"
 
     tags = response.json()
-    validate(instance=tags, schema=TAGS_SCHEMA)
+    assert validate(instance=tags, schema=TAGS_SCHEMA) is None, (
+        "Response data does not match schema"
+    )
 
     for tag in tags:
         assert tag.get('languageCode') in [lang_code, None], \
@@ -61,7 +58,9 @@ def test_invalid_language_parameter_returns_400(invalid_lang, expected_status, e
 
     if expected_status == 400:
         response_json = response.json()
-        validate(instance=response_json, schema=TAGS_ERROR_MESSAGE_SCHEMA)
+        assert validate(instance=response_json, schema=TAGS_ERROR_MESSAGE_SCHEMA) is None, (
+            "Response data does not match schema"
+        )
 
         assert response_json['message'] == expected_message, \
             f"Error message for '{invalid_lang}' should match expected pattern"
