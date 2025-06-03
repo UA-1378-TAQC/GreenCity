@@ -1,7 +1,6 @@
-import  green_city.src.util.logging_config
 import logging
 import requests
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 
 logger = logging.getLogger(__name__)
 
