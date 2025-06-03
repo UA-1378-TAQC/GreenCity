@@ -38,7 +38,6 @@ def test_get_tags_in_language_returns_200(lang_code):
         assert tag.get('languageCode') in [lang_code, None], \
             f"All tags should either have language code '{lang_code}' or be None"
 
-
 @pytest.mark.parametrize("invalid_lang,expected_status,expected_message", [
     ("1", 400, "Select correct language: 'en' or 'ua'"),
     ("*", 400, "Select correct language: 'en' or 'ua'"),
