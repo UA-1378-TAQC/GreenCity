@@ -23,8 +23,9 @@ ENDPOINTS = {
     'is_user_liked_eco_news': '/eco-news/{0}/likes/{1}',
     'like_eco_news': '/eco-news/{0}/likes',
     'news': '/eco-news/{0}',
-    'user_login': '/api/testers/sign-in',
     "recommended_eco_news": "/eco-news/{0}/recommended",
+    'user_login': '/api/testers/sign-in',
+    "news_recommended": "/eco-news/{0}/recommended"
 }
 
 TEST_USER_EMAIL = os.getenv("TEST_USER_EMAIL")
