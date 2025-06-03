@@ -1,6 +1,6 @@
 import requests
 from jsonschema import validate
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from green_city.tests.data.schema.recommended_news_schema import recommended_news_schema
 
 def test_get_recommended_news(create_news):

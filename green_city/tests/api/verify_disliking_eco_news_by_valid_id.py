@@ -1,5 +1,5 @@
 import requests
-from green_city.src.config import API_BASE_URL_8085, CREATOR_USER_EMAIL, ENDPOINTS
+from green_city.config.config import API_BASE_URL_8085, CREATOR_USER_EMAIL, ENDPOINTS
 
 def test_dislike_news(
     news_factory,
