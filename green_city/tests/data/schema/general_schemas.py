@@ -16,4 +16,3 @@ error_schema = {
     "required": ["timestamp", "status", "error", "path"],
     "additionalProperties": False,
 }
-

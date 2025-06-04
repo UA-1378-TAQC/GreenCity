@@ -26,6 +26,7 @@ ENDPOINTS = {
     'event_by_id': '/events/{0}',
     'event_comments': '/events/{0}/comments',
     'events': '/events',
+    'favorites':'/eco-news/{0}/favorites',
     'get_eco_news': '/eco-news',
     'get_user_id_by_email': '/user/findIdByEmail',
     'is_user_liked_eco_news': '/eco-news/{0}/likes/{1}',
