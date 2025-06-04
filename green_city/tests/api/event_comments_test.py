@@ -1,6 +1,7 @@
 # green_city/tests/api/events/event_comments_test.py
 import json
 import logging
+
 import pytest
 import requests
 from jsonschema import validate
@@ -14,6 +15,7 @@ from green_city.data.schema.event_comment_schema import (
 )
 
 logger = logging.getLogger(__name__)
+
 
 # ---------------- 201 -----------------
 @pytest.mark.api
@@ -40,17 +42,17 @@ def test_add_comment_201(auth_token, create_event):
     "payload, expected_msgs",
     [
         (
-            {"text": "", "parentComment": 0},
-            {
-                "Text must not be null and must contain at least one non-whitespace character.",
-                "length must be between 1 and 8000",
-            },
+                {"text": "", "parentComment": 0},
+                {
+                    "Text must not be null and must contain at least one non-whitespace character.",
+                    "length must be between 1 and 8000",
+                },
         ),
         (
-            {"text": " ", "parentComment": 0},
-            {
-                "Text must not be null and must contain at least one non-whitespace character.",
-            },
+                {"text": " ", "parentComment": 0},
+                {
+                    "Text must not be null and must contain at least one non-whitespace character.",
+                },
         ),
     ],
     ids=["empty_text", "whitespace_text"],
@@ -78,7 +80,6 @@ def test_add_comment_400(auth_token, create_event, payload, expected_msgs):
 # ---------------- 401 -----------------
 @pytest.mark.api
 def test_add_comment_401_no_auth(create_event):
-
     event_id = create_event["id"]
     url = f"{API_BASE_URL_8085}{ENDPOINTS['event_comments'].format(event_id)}"
 
@@ -95,7 +96,6 @@ def test_add_comment_401_no_auth(create_event):
 # ---------------- 404 -----------------
 @pytest.mark.api
 def test_add_comment_404_event_not_found(auth_token, nonexistent_event_id):
-
     url = f"{API_BASE_URL_8085}{ENDPOINTS['event_comments'].format(nonexistent_event_id)}"
 
     resp = requests.post(

@@ -1,7 +1,9 @@
 import pytest
 import requests
+
 from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from green_city.tests.data.test_data.eco_news_invalid_page_values import eco_news_invalid_page_values
+
 
 @pytest.mark.parametrize("page_param, expected_status, expected_message", eco_news_invalid_page_values)
 def test_get_eco_news_invalid_pages(auth_token, page_param, expected_status, expected_message):

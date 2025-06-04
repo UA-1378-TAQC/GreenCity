@@ -1,6 +1,5 @@
 import json
 
-import pytest
 import requests
 from jsonschema import validate
 
@@ -10,7 +9,7 @@ from green_city.data.schema.event_schema import EVENT_201
 
 
 def test_update_event_by_id_success(create_event, auth_token):
-    event_id =create_event.get("id")
+    event_id = create_event.get("id")
     payload = update_event_dto_request(event_id)
 
     response = requests.put(
@@ -22,7 +21,8 @@ def test_update_event_by_id_success(create_event, auth_token):
     assert response.status_code == 200
     data = response.json()
     validate(instance=data, schema=EVENT_201)
-    assert(data.get("id") == event_id), f"Expected event ID {event_id}, got {data.get('id')}"
+    assert (data.get("id") == event_id), f"Expected event ID {event_id}, got {data.get('id')}"
+
 
 def test_update_event_by_id_not_found(auth_token):
     non_existing_id = -1

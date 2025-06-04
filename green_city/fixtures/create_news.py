@@ -1,15 +1,18 @@
+import copy
+import json
+
 import pytest
 import requests
-import json
+
 from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from green_city.data.fixture_dto.create_news_dto import create_news_dto_request
-import copy
+
 
 @pytest.fixture(scope="function")
 def create_news(auth_token):
     url = f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}"
     dto_request_str = json.dumps(create_news_dto_request)
-    files = {'addEcoNewsDtoRequest': (None, dto_request_str),'image': (None, '')}
+    files = {'addEcoNewsDtoRequest': (None, dto_request_str), 'image': (None, '')}
     headers = {"Authorization": auth_token}
     response = requests.post(url, headers=headers, files=files)
     news_id = response.json().get("id")
@@ -17,6 +20,7 @@ def create_news(auth_token):
 
     delete_url = f"{API_BASE_URL_8085}{ENDPOINTS['delete_eco_news'].format(news_id)}"
     requests.delete(delete_url, headers=headers)
+
 
 @pytest.fixture
 def news_factory():
@@ -44,6 +48,7 @@ def news_factory():
         headers = {"Authorization": token}
         requests.delete(delete_url, headers=headers)
 
+
 @pytest.fixture(scope="function")
 def create_not_found_news(auth_token):
     url = f"{API_BASE_URL_8085}{ENDPOINTS['create_eco_news']}"
@@ -60,6 +65,7 @@ def create_not_found_news(auth_token):
     delete_url = f"{API_BASE_URL_8085}{ENDPOINTS['delete_eco_news'].format(news_id)}"
     requests.delete(delete_url, headers=headers)
     yield news_id
+
 
 @pytest.fixture(scope="function")
 def valid_news_payload():

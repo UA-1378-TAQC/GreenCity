@@ -1,8 +1,11 @@
+import json
+
 import pytest
 import requests
-import json
+
 from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from green_city.data.fixture_dto.create_event_dto_request import create_event_dto_request
+
 
 @pytest.fixture
 def create_event(auth_token):
@@ -22,4 +25,3 @@ def create_event(auth_token):
 
     delete_url = f"{API_BASE_URL_8085}{ENDPOINTS['delete_events'].format(event_id)}"
     del_response = requests.delete(delete_url, headers={"Authorization": auth_token})
-

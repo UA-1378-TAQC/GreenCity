@@ -1,9 +1,7 @@
 import pytest
 import requests
-import json
-from jsonschema.validators import validate
 
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 
 
 def test_get_eco_news_likes_count_success(create_news):

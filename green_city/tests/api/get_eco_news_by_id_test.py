@@ -1,11 +1,13 @@
+import logging
+
 import pytest
 import requests
 from jsonschema import validate
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
+
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from green_city.tests.data.schema.news_id_schema import get_schema
 from green_city.tests.data.test_data.news_id_data import get_data
-import green_city.src.util.logging_config
-import logging
+
 logger = logging.getLogger(__name__)
 
 

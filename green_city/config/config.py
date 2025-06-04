@@ -1,10 +1,11 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
-API_BASE_URL_8065 = os.getenv("API_BASE_URL_8065","http://localhost:8065/")
-API_BASE_URL_8085 = os.getenv("API_BASE_URL_8085","http://localhost:8085/")
+API_BASE_URL_8065 = os.getenv("API_BASE_URL_8065", "http://localhost:8065/")
+API_BASE_URL_8085 = os.getenv("API_BASE_URL_8085", "http://localhost:8085/")
 
 TEST_USER_EMAIL = os.getenv("TEST_USER_EMAIL")
 TEST_USER_PASSWORD = os.getenv("TEST_USER_PASSWORD")
@@ -23,13 +24,13 @@ ENDPOINTS = {
     'create_eco_news': '/eco-news',
     'delete_eco_news': '/eco-news/{0}',
     'delete_events': '/events/{0}',
-    'favorites':'/eco-news/{0}/favorites',
+    'favorites': '/eco-news/{0}/favorites',
     'all_news': '/eco-news',
     'dislike_eco_news': '/eco-news/{0}/dislikes',
     'event_by_id': '/events/{0}',
     'event_comments': '/events/{0}/comments',
     'events': '/events',
-    'favorites':'/eco-news/{0}/favorites',
+    'favorites': '/eco-news/{0}/favorites',
     'get_eco_news': '/eco-news',
     'get_user_id_by_email': '/user/findIdByEmail',
     'is_user_liked_eco_news': '/eco-news/{0}/likes/{1}',

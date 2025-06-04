@@ -1,14 +1,17 @@
 import json
+
 import pytest
 import requests
 from jsonschema import validate
+
 from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.data.fixture_dto.create_event_dto_request import create_event_dto_request
 from green_city.data.schema.error_event_schema import error_event_schemas
 from green_city.data.schema.event_schema import EVENT_SCHEMA
+from green_city.data.test_data.post_event_error_message import post_event_test_data
 from green_city.fixtures.create_event_fixtures import create_event
 from green_city.fixtures.login_fixture import auth_token
-from green_city.data.test_data.post_event_error_message import post_event_test_data
-from green_city.data.fixture_dto.create_event_dto_request import create_event_dto_request
+
 
 def test_create_event_returns_201(create_event):
     event_data = create_event
@@ -17,8 +20,8 @@ def test_create_event_returns_201(create_event):
         "Response data does not match schema"
     )
 
-def test_create_event_unauthorized_returns_401():
 
+def test_create_event_unauthorized_returns_401():
     url = f"{API_BASE_URL_8085}{ENDPOINTS['events']}"
 
     dto_request_str = json.dumps(create_event_dto_request)

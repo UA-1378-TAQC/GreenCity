@@ -1,4 +1,3 @@
-
 EVENT_404_SCHEMA = {
     "type": "object",
     "required": ["message"],

@@ -21,7 +21,8 @@ post_event_test_data = {
         ),
         "expected_errors": [
             {"name": "description", "message": "must not be blank"},
-            {"name": "description", "message": "Description must be at least 10 characters long (excluding leading / trailing spaces) and must not contain consecutive spaces."},
+            {"name": "description",
+             "message": "Description must be at least 10 characters long (excluding leading / trailing spaces) and must not contain consecutive spaces."},
             {"name": "description", "message": "size must be between 10 and 63206"}
         ]
     },

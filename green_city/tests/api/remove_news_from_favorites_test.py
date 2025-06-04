@@ -1,14 +1,13 @@
+import json
+
 import pytest
 import requests
-import json
-from jsonschema.validators import validate
 
-from green_city.src.config import API_BASE_URL_8085
+from green_city.config.config import API_BASE_URL_8085
 
 
 @pytest.fixture
 def create_and_cleanup_eco_news(auth_token):
-
     eco_news_json = {
         "title": "Test Eco News for Favorites",
         "text": "This is a test eco news content for testing favorites functionality. It needs to be long enough to meet requirements.",
@@ -236,7 +235,6 @@ def test_favorites_response_headers(create_and_cleanup_eco_news, auth_token):
 
 @pytest.mark.parametrize("eco_news_id", [1, 2, 3])
 def test_favorites_operations_various_ids(eco_news_id, auth_token):
-
     add_response = requests.post(
         f"{API_BASE_URL_8085}/eco-news/{eco_news_id}/favorites",
         headers={"Authorization": auth_token}

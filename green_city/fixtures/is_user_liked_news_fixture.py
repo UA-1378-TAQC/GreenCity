@@ -1,5 +1,6 @@
 import pytest
 import requests
+
 from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 
 
