@@ -13,3 +13,19 @@ create_event_dto_request = {
         }],
         "tags": ["Social"]
     }
+
+def update_event_dto_request(event_id):
+    return {
+        "id": event_id,
+        "title": "Updated Event Title",
+        "description": "Updated Description",
+        "datesLocations": [
+            {
+                "startDate": "2033-05-27T15:00:00Z",
+                "finishDate": "2033-05-27T17:00:00Z",
+                "onlineLink": "http://test.example.com"
+            }
+        ],
+        "tags": ["Social"],
+        "open": True
+    }
