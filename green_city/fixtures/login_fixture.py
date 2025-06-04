@@ -9,3 +9,4 @@ def auth_token():
 @pytest.fixture(scope="session")
 def auth_token_second_user():
     return get_auth_token(CREATOR_USER_EMAIL, CREATOR_USER_PASSWORD)
+

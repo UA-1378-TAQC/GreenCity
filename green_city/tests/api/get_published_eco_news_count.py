@@ -4,8 +4,6 @@ import logging
 import pytest
 import requests
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
-
 import green_city.config.config
 import green_city.config.logging_config
 
