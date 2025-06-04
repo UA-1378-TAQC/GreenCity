@@ -1,5 +1,7 @@
 import requests
-from green_city.src.config import API_BASE_URL_8065, ENDPOINTS, SECRET_KEY
+
+from green_city.config.config import API_BASE_URL_8065, ENDPOINTS, SECRET_KEY
+
 
 def get_auth_token(email: str, password: str) -> str:
     login_data = {

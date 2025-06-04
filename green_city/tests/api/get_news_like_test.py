@@ -1,10 +1,8 @@
-from tkinter.tix import INTEGER
-
 import pytest
 import requests
 from jsonschema import validate
 
-from green_city.src.config import ENDPOINTS, API_BASE_URL_8085
+from green_city.config.config import ENDPOINTS, API_BASE_URL_8085
 from green_city.tests.data.schema.not_found_schema import not_found_schema
 
 
