@@ -22,6 +22,8 @@ ENDPOINTS = {
     'create_eco_news': '/eco-news',
     'delete_eco_news': '/eco-news/{0}',
     'delete_events': '/events/{0}',
+    'favorites':'/eco-news/{0}/favorites',
+    'all_news': '/eco-news',
     'dislike_eco_news': '/eco-news/{0}/dislikes',
     'event_by_id': '/events/{0}',
     'event_comments': '/events/{0}/comments',
