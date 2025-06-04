@@ -36,6 +36,7 @@ ENDPOINTS = {
     'is_user_liked_eco_news': '/eco-news/{0}/likes/{1}',
     'like_eco_news': '/eco-news/{0}/likes',
     'news': '/eco-news/{0}',
+    "news_tags": "/eco-news/tags",
     'news_recommended': '/eco-news/{0}/recommended',
     'recommended_eco_news': '/eco-news/{0}/recommended',
     'user_login': '/api/testers/sign-in'
