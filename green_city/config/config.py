@@ -18,6 +18,7 @@ ENDPOINTS = {
     'check_eco_news_dislikes_count': '/eco-news/{0}/dislikes/count',
     'check_eco_news_likes_count': '/eco-news/{0}/likes/count',
     'comments': '/eco-news/{0}/comments',
+    "summary": "/eco-news/{0}/summary",
     'count_eco_news': '/eco-news/count',
     'create_eco_news': '/eco-news',
     'delete_eco_news': '/eco-news/{0}',
