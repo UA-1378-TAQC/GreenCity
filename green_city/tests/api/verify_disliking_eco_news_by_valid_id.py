@@ -1,14 +1,16 @@
 import requests
-from green_city.src.config import API_BASE_URL_8085, CREATOR_USER_EMAIL, ENDPOINTS
+
+from green_city.config.config import API_BASE_URL_8085, CREATOR_USER_EMAIL, ENDPOINTS
+
 
 def test_dislike_news(
-    news_factory,
-    like_news_factory,
-    dislike_news_factory,
-    auth_token,
-    auth_token_second_user,
-    user_id_by_email_factory,
-    check_like_status_factory
+        news_factory,
+        like_news_factory,
+        dislike_news_factory,
+        auth_token,
+        auth_token_second_user,
+        user_id_by_email_factory,
+        check_like_status_factory
 ):
     news_id = news_factory(auth_token)
 

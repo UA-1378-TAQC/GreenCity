@@ -1,11 +1,12 @@
-import pytest
 import json
+import logging
+
+import pytest
 import requests
 from jsonschema import validate
+
 from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from green_city.tests.data.schema.add_news_schema import post_schema
-import green_city.config.logging_config
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -54,6 +55,7 @@ def test_add_news_invalid_tags(auth_token, valid_news_payload, tags, expected_me
     logger.info("Validating response schema for 400...")
     validate(json_body, post_schema["400_schema"])
     assert isinstance(resp.json()["message"], str)
+
 
 def test_add_news_invalid_source(auth_token, valid_news_payload):
     valid_news_payload["source"] = "example.org"
