@@ -1,10 +1,11 @@
 import logging
+
 import coloredlogs
 
-def set_logger(name):
+
+def get_logger(name):
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
-    
     coloredlogs.install(
         level='DEBUG',
         logger=logger,
@@ -23,7 +24,3 @@ def set_logger(name):
         }
     )
     return logger
-
-
-def get_logger(name):
-    return set_logger(name)
