@@ -2,7 +2,7 @@ import logging
 import pytest
 import requests
 
-from green_city.src.config import API_BASE_URL_8085, ENDPOINTS
+from green_city.config.config import API_BASE_URL_8085, ENDPOINTS
 from green_city.tests.data.schema.event_schema import EVENT_SCHEMA, EVENT_PAGE_SCHEMA
 from jsonschema import validate
 
