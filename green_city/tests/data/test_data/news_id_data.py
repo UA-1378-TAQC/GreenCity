@@ -1,8 +1,8 @@
 get_data = {
-    "valid_eco_news_id": 1,
+    "valid_eco_news_id": 126,
     "200_response_body": {
         "status": 200,
-        "id": 1,
+        "id": 126,
         "title": "My Test Eco News",
         "content": "<p>My Test Eco News My Test Eco News</p>"
     },
